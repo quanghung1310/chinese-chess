@@ -1,0 +1,85 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>Xiangqi - play online</title>
+    
+    <!-- Encoding -->
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+    <meta content="utf-8" http-equiv="encoding">
+    
+    <!-- SEO -->
+    <meta name="description" content="Didactic Chinese chess Xiangqi engine by Code Monkey King">
+    <meta name="keywords" content="play xiangqi online chinese chess engine javascript">
+    
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="/static/libs/css/bootstrap.min.css">
+    <script src="/static/libs/js/jquery.min.js"></script>
+    <script src="/static/libs/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Analytics -->
+    <script type="text/javascript">
+      if (window.location.href.includes('github')) {
+        $.post('https://maksimkorzh.pythonanywhere.com/analytics/api/post', {
+          date: new Date,
+          url: window.location.href
+        });
+      }
+    </script>
+    
+  </head>
+  <body style="font-family:
+               monospace; font-size: 16px;
+               background: url(/static/game/images/misc/wallpaper.jpg);
+               background-repeat: no-repeat;
+               background-attachment: fixed;
+               background-position: center;
+               background-size: cover;
+               display: flex;
+               justify-content: center;
+               align-items: center;
+               height: 100vh;
+               "
+        
+        class="img-fluid bg-cover text-center">
+
+    <div id="main">
+      <!-- Chess board view -->
+      <div id="xiangqiboard" 
+           style="border: 1px solid black;
+                  background: url(/static/game/images/boards/board-ccbridge.png);
+                  background-size: contain;"
+      ></div>
+    <div>
+    
+    <!-- Xiangqi engine -->
+    <script src="/static/game/wukong.js"></script>
+    
+    <!-- Bots -->
+    <!--script src="/static/game/bots.js"></script-->
+
+    <!-- User input handling -->
+    <script src="/static/game/xiangqi.js"></script>
+    
+    <!-- DevTools detection -->
+    <script src="/static/libs/js/isdevtoolopen.js"> </script>
+    
+    <!-- Remove background image when DevTools are open -->
+    <script type="module">
+      // on update page when devtools are opened
+	  if (window.devtools.isOpen == 1) {
+        document.body.style.backgroundImage = '';
+      }
+      
+      // on devtools open/close
+	    window.addEventListener('devtoolschange', event => {
+	      if (window.devtools.isOpen == 0) {
+          document.body.style.backgroundImage = '';
+        } else if (window.devtools.isOpen == 1) {
+          document.body.style.backgroundImage = 'url(/static/game/images/misc/wallpaper.jpg)';
+        }
+      });	    
+    </script>
+  </body>
+<html>
+
+
