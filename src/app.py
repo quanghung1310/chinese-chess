@@ -27,6 +27,10 @@ def new_game():
 def board(id):
     return render_template('game.html')
 
+@app.route('/bot')
+def bot():
+    return render_template('game_bot.html')
+
 # test route
 @app.route('/board', methods=['GET', 'POST'])
 def move():
